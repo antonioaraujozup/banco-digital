@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "conta")
-public class ContaEntity {
+public class Conta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +28,6 @@ public class ContaEntity {
      * @deprecated Construtor para uso exclusivo do Hibernate.
      */
     @Deprecated
-    public ContaEntity() {
+    public Conta() {
     }
 }

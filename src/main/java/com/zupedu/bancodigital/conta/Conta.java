@@ -28,6 +28,12 @@ public class Conta {
 
     private BigDecimal saldo;
 
+    @Column(name = "data_inativacao")
+    private LocalDateTime dataInativacao;
+
+    @Enumerated(EnumType.STRING)
+    private StatusConta status;
+
     @ManyToMany
     @JoinTable(
             name = "conta_produto",

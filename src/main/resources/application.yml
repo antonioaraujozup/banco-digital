@@ -4,7 +4,7 @@ server:
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
   datasource:
     url: jdbc:h2:~/bancodigital
     username: root
@@ -18,5 +18,6 @@ spring:
     url: jdbc:h2:~/bancodigital
     user: ${DATABASE_USER:root}
     password: ${DATABASE_PASSWD:root}
+    enabled: true
 
 

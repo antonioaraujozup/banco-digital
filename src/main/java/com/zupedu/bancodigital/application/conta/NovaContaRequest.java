@@ -1,14 +1,16 @@
-package com.zupedu.bancodigital.controller;
+package com.zupedu.bancodigital.application.conta;
 
-import com.zupedu.bancodigital.model.Conta;
+import com.zupedu.bancodigital.domain.conta.Conta;
+import com.zupedu.bancodigital.domain.conta.DadosNovaConta;
 import com.zupedu.bancodigital.domain.correntista.Correntista;
-import com.zupedu.bancodigital.model.Tipo;
+import com.zupedu.bancodigital.domain.conta.Tipo;
 import com.zupedu.bancodigital.adapters.persistence.correntista.CorrentistaRepository;
+import com.zupedu.bancodigital.domain.correntista.RetornaCorrentistaRepository;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
-public class NovaContaRequest {
+public class NovaContaRequest implements DadosNovaConta {
 
     @NotNull
     private Tipo tipo;
@@ -25,8 +27,8 @@ public class NovaContaRequest {
         return correntistaId;
     }
 
-    public Conta paraConta(CorrentistaRepository correntistaRepository) {
-        Correntista correntista = correntistaRepository.findById(correntistaId)
+    public Conta toModel(RetornaCorrentistaRepository retornaCorrentistaRepository) {
+        Correntista correntista = retornaCorrentistaRepository.findById(correntistaId)
                                                        .orElseThrow(() -> new IllegalStateException("Correntista nao cadastrado"));
         return new Conta(tipo, correntista);
     }
